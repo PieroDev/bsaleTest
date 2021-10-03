@@ -1,7 +1,5 @@
-const saludar = () =>{
-    alert("Holiwi")
+let previousData
 
-}
 //Initial products query
 const getItems = async () => {
     const res = await fetch("bsaleApi/");
@@ -20,6 +18,7 @@ const getCategories = async () => {
 }
 let categoriesDataApi = getCategories()
 
+//Listener for input when Enter key is pressed
 const search = (e) =>{
     document.getElementById("search-hint").style.visibility = "hidden"
     if(e.keyCode === 13){
@@ -28,13 +27,12 @@ const search = (e) =>{
     }
 }
 
-
-
-
+//Handles the fetched data and renders all the items
 const renderData = async ( data ) => {
     const apiResp = await data
     let renderedItems = ""
     console.log(apiResp)
+    previousData = apiResp
     const defaultUrlImage = '../img/notAvailable.png'
 
     apiResp.map(({ url_image, name, price, discount, id }) => {
@@ -43,8 +41,15 @@ const renderData = async ( data ) => {
             let discountPrice = price-(price*(discount/100))
             console.log("Precio Normal: "+price)
             console.log("Precio Descuento: "+discountPrice)
-
             priceContent = `
+                <div class='discount'>
+                    <p class="animate__animated animate__heartBeat animate__repeat-3">
+                        Sale!
+                        <br/>
+                        ${discount}%
+                    </p>
+                    
+                </div>
                 <p class="card-text precio-normal">Precio normal: $${price}</p>
                 <p class="card-text precio-descuento">Precio Descuento:</p>
                 <p class="card-text price discountPrice">$${discountPrice}</p>
@@ -77,8 +82,8 @@ const renderData = async ( data ) => {
 } 
 
 
+//Handles the fetched data and renders all the categories
 const renderCategories = async ( data ) =>{
-    console.log("Desde render categories")
     const apiResp = await data
     let renderedCategories = "<option value=TODOS>TODOS</option>"
     console.log(apiResp)
@@ -90,11 +95,9 @@ const renderCategories = async ( data ) =>{
     document.getElementById('category').innerHTML = renderedCategories
 }
 
-
-
+//Fetches the data searching by category
 const searchByCategory = async () =>{
     let category = document.getElementById("category").value
-
     if(category === "TODOS"){
         const res = await fetch("bsaleApi/");
         const data = await res.json();
@@ -105,10 +108,9 @@ const searchByCategory = async () =>{
         const data = await res.json()
         renderData(data)
     }
-    
 }
 
-
+//Fetches the data searching by name
 const searchItemByInput = async () => {
     const inputString = document.getElementById("search-input").value  
     if(inputString === ""){
@@ -124,5 +126,46 @@ const searchItemByInput = async () => {
     }
 } 
 
+
+const orderBy = () =>{
+    let orderOption =  document.getElementById("orderBy").value
+    console.log(orderOption)
+    switch(orderOption){
+        case "1": previousData.sort(function(a, b){
+            if(a.name > b.name) {return - 1}
+            if(a.name < b.name) {return 1}
+            return 0
+        })
+        break;
+        case "2": previousData.sort(function(a, b){
+            if(a.name < b.name) {return - 1}
+            if(a.name > b.name) {return 1}
+            return 0
+        })
+        break;
+        case "3": previousData.sort(function(a, b){
+            if(a.price < b.price) {return - 1}
+            if(a.price > b.price) {return 1}
+            return 0
+        })
+        break;
+        case "4": previousData.sort(function(a, b){
+            if(a.price > b.price) {return - 1}
+            if(a.price < b.price) {return 1}
+            return 0
+        })
+        break;
+        case "5": previousData.sort(function(a, b){
+            if(a.discount > b.discount) {return - 1}
+            if(a.discount < b.discount) {return 1}
+            return 0
+        })
+        break;
+    }
+    renderData(previousData)
+    console.log(previousData)
+}
+
+//Initial render of products and its categories
 renderData(dataApi)
 renderCategories(categoriesDataApi)
