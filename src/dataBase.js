@@ -1,7 +1,5 @@
 const mysql = require('mysql')
 
-
-//Mysql
 const sqlConn = mysql.createConnection({
     host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
     user: "bsale_test",
@@ -11,7 +9,7 @@ const sqlConn = mysql.createConnection({
 //Check connection
 sqlConn.connect(error =>{
     if(error) throw error;
-    console.log('SERVER IS RUNNING')
+    console.log('Server (database) is running')
 })
 
 module.exports = sqlConn
