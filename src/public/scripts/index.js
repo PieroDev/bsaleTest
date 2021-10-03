@@ -29,6 +29,8 @@ const search = (e) =>{
 
 //Handles the fetched data and renders all the items
 const renderData = async ( data ) => {
+    const spinner = document.getElementById("spinner")
+    spinner.style.visibility = "visible"
     const apiResp = await data
     let renderedItems = ""
     console.log(apiResp)
@@ -52,7 +54,7 @@ const renderData = async ( data ) => {
                 </div>
                 <p class="card-text precio-normal">Precio normal: $${price}</p>
                 <p class="card-text precio-descuento">Precio Descuento:</p>
-                <p class="card-text price discountPrice">$${discountPrice}</p>
+                <p class="card-text price discountPrice">$${Math.round(discountPrice)}</p>
             `
         }
         else{
@@ -77,8 +79,12 @@ const renderData = async ( data ) => {
     })
     let counter = document.getElementById('total-resultados')
     counter.innerHTML = apiResp.length
-    document.getElementById('resultados').style.visibility = 'inherit'
-    document.getElementById('items-container').innerHTML = renderedItems
+    setTimeout(() => {
+        spinner.style.visibility = "hidden"
+        document.getElementById('resultados').style.visibility = 'inherit'
+        document.getElementById('items-container').innerHTML = renderedItems
+    }, 1300);
+    
 } 
 
 

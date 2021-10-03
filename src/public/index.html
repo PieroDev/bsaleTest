@@ -10,9 +10,14 @@
         rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
         crossorigin="anonymous"
     >
+    <!-- CSS styles -->
     <link 
         rel="stylesheet" 
         href="styles/index.css"
+    >
+    <link 
+        rel="stylesheet" 
+        href="styles/spinner.css"
     >
     <!-- Font awesome -->
     <link 
@@ -30,10 +35,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet"> 
-    <title>Bsale Test</title>
+    <link rel="stylesheet" href="slick-loader.min.css" />
 </head>
 <body>
     <br>
+    <div id="spinner" class="loader-container">
+        <div class="spinner-container">
+            <div class="loader">
+            </div>
+            <p>Buscando...</i></p>
+            <i class="fas fa-glass-cheers"></i>
+        </div>
+    </div>
     <header>
         <nav>
             <ul class="nav justify-content-center">
@@ -52,6 +65,7 @@
             </div>
         </div>
     </header>
+
     <div class="content-container">
         <div class="row">
             <h3>Busca lo que quieres</h3>
@@ -68,12 +82,12 @@
                     <select id="category" onchange="searchByCategory()">
                         <option value="">Categoria del producto</option>
                     </select>
-                </div class="fillters-item">
-                <div>
+                </div>
+                <div class="fillters-item">
                     <p>Ordenar por</p>
                     <select id="orderBy" onchange="orderBy()">
-                        <option value="1">Alfabéticamente ↑</option>
-                        <option value="2">Alfabéticamente ↓</option>
+                        <option value="1">Alfabeto ↑</option>
+                        <option value="2">Alfabeto ↓</option>
                         <option value="3">Más barato primero</option>
                         <option value="4">Más caro primero</option>
                         <option value="5">Mayor descuento</option>
@@ -83,11 +97,9 @@
             </div>
         </div>
         <div id="items-container" class="items-container">
-    
+
         </div>
-        
     </div>
-    
 </body>
 <script src="scripts/index.js"></script>
 </html>
