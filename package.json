@@ -20,7 +20,8 @@
   "homepage": "https://github.com/PieroDev/bsaleTest#readme",
   "dependencies": {
     "animate.css": "^4.1.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "express": "^4.17.1",
