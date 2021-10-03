@@ -72,7 +72,6 @@ const searchItemByInput = async () => {
         document.getElementById("search-hint").style.visibility = "inherit"
     }
     else{
-        console.log("Input: "+inputString)
         const res = await fetch(`/bsaleApi/search/${inputString}`)
         const data = await res.json()
         loadSpinner = true
@@ -83,7 +82,6 @@ const searchItemByInput = async () => {
 
 const orderBy = () =>{
     let orderOption =  document.getElementById("orderBy").value
-    console.log(orderOption)
     switch(orderOption){
         case "1": previousData.sort(function(a, b){
             if(a.name > b.name) {return - 1}
@@ -98,14 +96,14 @@ const orderBy = () =>{
         })
         break;
         case "3": previousData.sort(function(a, b){
-            if(a.price < b.price) {return - 1}
-            if(a.price > b.price) {return 1}
+            if(a.price-(a.price*(a.discount/100)) < b.price-(b.price*(b.discount/100))) {return -1}
+            if(a.price-(a.price*(a.discount/100)) > b.price-(b.price*(b.discount/100))) {return 1}
             return 0
         })
         break;
         case "4": previousData.sort(function(a, b){
-            if(a.price > b.price) {return - 1}
-            if(a.price < b.price) {return 1}
+            if(a.price-(a.price*(a.discount/100)) > b.price-(b.price*(b.discount/100))) {return -1}
+            if(a.price-(a.price*(a.discount/100)) < b.price-(b.price*(b.discount/100))) {return 1}
             return 0
         })
         break;
@@ -130,7 +128,6 @@ let pagingList
 
 const calculatePagination = async ( data ) =>{
     const productItems = await data
-    console.log(productItems)
     let pagesNumber = productItems.length / 8
     const pagesNumberRemainder = pagesNumber % 1
     const pagesNumberWithoutRemainder = Math.floor(pagesNumber)
@@ -148,9 +145,9 @@ const calculatePagination = async ( data ) =>{
 
 const injectPagination = () =>{
     pagingList = `
-        <li class="page-item"><a class="page-link" onclick="goPrev()">Previous</a></li>
+        <li class="page-item"><a href="#content" class="page-link" onclick="goPrev()">Anterior</a></li>
         <li class="page-item"><p id="spanSelectedPage">Página ${selectedPage} de ${productsPages.length}</p></li>
-        <li class="page-item"><a class="page-link" onclick="goNext()">Next</a></li>
+        <li class="page-item"><a href="#content" class="page-link" onclick="goNext()">Siguiente</a></li>
     `
     document.getElementById("pagingTop").innerHTML = pagingList
     document.getElementById("pagingBottom").innerHTML = pagingList
@@ -165,15 +162,9 @@ const injectPage = async (data) =>{
     previousData = apiResp
     const defaultUrlImage = '../img/notAvailable.png'
     const list = await data
-    console.log(list)
     renderedItems = ""
     const newListOfItems = list.slice(startIndex, endIndex)
-    console.log("Here")
-    console.log(newListOfItems)
     newListOfItems.map(({ url_image, name, price, discount, id }, index) =>{
-        console.log("Entro aca")
-        console.log(name)
-        console.log(index)
         let priceContent = ""
         if(discount>0){
             let discountPrice = price-(price*(discount/100))
@@ -230,6 +221,7 @@ const injectPage = async (data) =>{
 
 const goPrev = () =>{
     if(selectedPage != 1){
+        //window.scrollTo(0, 0);
         startIndex -= 8
         endIndex -= 8
         selectedPage--

@@ -51,11 +51,11 @@
         <nav>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                  <div class="icon-container">
                     <a class="navbar-brand" aria-current="page" href="/">
+                        <div class="icon-container">
+                        </div>
+                        <p style="text-align: center; color: #ff5c1a; font-weight: bold;">Licores</p>
                     </a>
-                  </div>
-                  <p style="text-align: center; color: #ff5c1a; font-weight: bold;">Licores</p>
                 </li>
               </ul>
         </nav>
@@ -65,51 +65,53 @@
             </div>
         </div>
     </header>
-
-    <div class="content-container">
-        <div class="row">
-            <h3>Busca lo que quieres</h3>
-            <div class="input-container">
-                <input id="search-input" class="search-input" type="text" onkeypress="search(event)">
-                <p id="search-hint" style="visibility: hidden; color: red;">Ingresa producto a buscar</p>
-                <div>
-                    <p id="resultados" style="visibility: hidden;">Se encontraron <span id="total-resultados"></span> resultados</p>
+    <section id="content">
+        <div class="content-container">
+            <div class="row">
+                <h3>Busca lo que quieres</h3>
+                <div class="input-container">
+                    <input id="search-input" class="search-input" type="text" onkeypress="search(event)">
+                    <p id="search-hint" style="visibility: hidden; color: red;">Ingresa producto a buscar</p>
+                    <div>
+                        <p id="resultados" style="visibility: hidden;">Se encontraron <span id="total-resultados"></span> resultados</p>
+                    </div>
+                </div>
+                <div class="fillters-container">
+                    <div class="fillters-item">
+                        <p>Categoria del producto</p>
+                        <select id="category" onchange="searchByCategory()">
+                            <option value="">Categoria del producto</option>
+                        </select>
+                    </div>
+                    <div class="fillters-item">
+                        <p>Ordenar por</p>
+                        <select id="orderBy" onchange="orderBy()">
+                            <option value="1">Alfabeto ↑</option>
+                            <option value="2">Alfabeto ↓</option>
+                            <option value="3">Más barato primero</option>
+                            <option value="4">Más caro primero</option>
+                            <option value="5">Mayor descuento</option>
+                        </select>
+                    </div>
+                    
                 </div>
             </div>
-            <div class="fillters-container">
-                <div class="fillters-item">
-                    <p>Categoria del producto</p>
-                    <select id="category" onchange="searchByCategory()">
-                        <option value="">Categoria del producto</option>
-                    </select>
-                </div>
-                <div class="fillters-item">
-                    <p>Ordenar por</p>
-                    <select id="orderBy" onchange="orderBy()">
-                        <option value="1">Alfabeto ↑</option>
-                        <option value="2">Alfabeto ↓</option>
-                        <option value="3">Más barato primero</option>
-                        <option value="4">Más caro primero</option>
-                        <option value="5">Mayor descuento</option>
-                    </select>
-                </div>
+            <div class="pagination-container">
+                <ul class="pagination" id="pagingTop">
                 
+                </ul>
+            </div>
+            <div id="items-container" class="items-container">
+    
+            </div>
+            <div class="pagination-container">
+                <ul class="pagination" id="pagingBottom">
+                
+                </ul>
             </div>
         </div>
-        <div class="pagination-container">
-            <ul class="pagination" id="pagingTop">
-            
-            </ul>
-        </div>
-        <div id="items-container" class="items-container">
-
-        </div>
-        <div class="pagination-container">
-            <ul class="pagination" id="pagingBottom">
-            
-            </ul>
-        </div>
-    </div>
+    </section>
+    
 </body>
 <script src="scripts/index.js"></script>
 </html>
