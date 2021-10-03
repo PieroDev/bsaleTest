@@ -159,7 +159,7 @@ body p{
 
 
 
-@media (max-width: 480px) and (min-width: 320px ){
+@media screen and (min-width: 320px ) and (max-width: 480px) {
     .items-container{
         flex-direction: column;
         flex-wrap: wrap;
@@ -204,7 +204,7 @@ body p{
     }
 }
 
-@media (max-width: 768px) and (min-width: 481){
+@media screen and (min-width: 481) and (max-width: 768px) {
     .content-container{
         width: 100%;
     }
@@ -221,7 +221,7 @@ body p{
     }
 }
 
-@media (max-width: 1024px) and (min-width: 769px){
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .content-container{
         width: 100%;
     }
@@ -246,17 +246,15 @@ body p{
         height: 3vh;
         font-size: 1.2em;
     }
-
-    
-
-
 }
 
-@media (max-width: 1200px) and (min-width: 1025px){
-
+@media screen and (max-width: 1200px) and (min-width: 1025px){
+    .card-container{
+        width: 40%;
+    }
 }
 
-@media (min-width: 1201px){
+@media screen and (min-width: 1201px){
     .content-container{
         width: 100%;
     }
@@ -273,5 +271,36 @@ body p{
 
     .card{
         height: 100%;
+    }
+}
+
+/* Para ipad */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { 
+    .content-container{
+        width: 100%;
+    }
+
+    .items-container{
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .card-container{
+        width: 40%;
+        margin: 10px;
+    }
+    .card{
+        width: 100%;
+    }
+
+    .search-input{
+        padding: 0.2em;
+        width: 74%;
+        height: 3vh;
+        font-size: 1.2em;
     }
 }
