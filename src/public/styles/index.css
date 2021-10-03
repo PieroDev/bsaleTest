@@ -46,6 +46,22 @@ body p{
     transform: translate(0, -50%);
 }
 
+.pagination-container{
+    text-align: center;
+    margin: auto;
+}
+
+.pagination{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination p{
+    height: 100%;
+    vertical-align: middle;
+}
 
 .content-container{
     margin: auto;
@@ -60,7 +76,7 @@ body p{
     flex-wrap: wrap;
 }
 
-.items-container{
+.items-container, .list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
