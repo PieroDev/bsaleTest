@@ -2,11 +2,7 @@ const mysql = require('mysql')
 const express = require('express')
 const path = require('path')
 const app = express()
-
-
-const PORT = process.env.PORT || 3000
-
-
+const port = process.env.PORT || 8000
 
 //Static
 app.use(express.static(path.join(__dirname, 'public')))
@@ -17,7 +13,7 @@ app.use("/bsaleApi", require('./routes/bsaleApi'))
 app.use(express.json())
 
 
-app.listen(PORT, () => console.log("app running at port: "+PORT))
+app.listen(port, () => console.log("app running at port: "+port))
 
 
 
