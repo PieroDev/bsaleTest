@@ -1,0 +1,71 @@
+body{
+    background-color: #ebebeb;
+}
+
+.content-container{
+
+    margin: auto;
+    padding: 0;
+    width: 80%; 
+    min-height: 100vh;
+}
+
+.row{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.items-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.card-container{
+    width: 20%;
+    margin: 2vh 0;
+}
+
+.card{
+    padding: 1.5em;
+    height: 50vh;
+    text-align: center;
+}
+
+.card img{
+    min-height: 250px;
+}
+
+.productName{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+.price{
+    font-size: 1.5em;
+}
+
+.discountPrice{
+    color: #ff5c1a
+}
+
+.search-input{
+    border: 1px solid #ff5c1a;
+    width: 50%;
+    font-size: 2.5em;
+    background-color: #ebebeb;
+    text-align: center;
+    outline: none;
+}
+
+.search-input-active{
+    border: none;
+    width: 50%;
+    font-size: 2.5em;
+    background-color: #ebebeb;
+    outline: none;
+    text-align: center;
+}
