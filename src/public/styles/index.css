@@ -69,7 +69,7 @@ body p{
 
 .card-container{
     width: 20%;
-    margin: 2vh 0;
+    margin: 2vh 15px;
 }
 
 .card{
@@ -159,16 +159,16 @@ body p{
 
 
 
-@media (max-width: 480px){
+@media (max-width: 480px) and (min-width: 320px ){
     .items-container{
         flex-direction: column;
         flex-wrap: wrap;
         align-content: center;
+        width: 100%;
     }
 
     .card-container{
         width: 90%;
-        min-height: 70vh;
     }
 
     .card{
@@ -201,5 +201,77 @@ body p{
 
     .title-container{
         display: none;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481){
+    .content-container{
+        width: 100%;
+    }
+    .items-container{
+        flex-wrap: wrap;
+    }
+
+    .card-container{
+        width: 30%;
+    }
+
+    .card{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px){
+    .content-container{
+        width: 100%;
+    }
+
+    .items-container{
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .card-container{
+        width: 40%;
+        margin: 10px;
+    }
+    .card{
+        width: 100%;
+    }
+
+    .search-input{
+        padding: 0.2em;
+        width: 74%;
+        height: 3vh;
+        font-size: 1.2em;
+    }
+
+    
+
+
+}
+
+@media (max-width: 1200px) and (min-width: 1025px){
+
+}
+
+@media (min-width: 1201px){
+    .content-container{
+        width: 100%;
+    }
+
+    .items-container{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .card-container{
+        min-height: 50vh ;
+        margin: 0 inherit;
+    }
+
+    .card{
+        height: 100%;
     }
 }

@@ -67,7 +67,7 @@ const renderData = async ( data ) => {
 
         renderedItems += `
             <div class="card-container">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                 <img src="${ url_image || defaultUrlImage }" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title productName">${name}</h4>
@@ -79,12 +79,12 @@ const renderData = async ( data ) => {
     })
     let counter = document.getElementById('total-resultados')
     counter.innerHTML = apiResp.length
+
     setTimeout(() => {
         spinner.style.visibility = "hidden"
         document.getElementById('resultados').style.visibility = 'inherit'
         document.getElementById('items-container').innerHTML = renderedItems
     }, 1300);
-    
 } 
 
 
