@@ -112,7 +112,7 @@ Si necesitas saber tu versión, utiliza:
 4. Instala las dependencias para desarrollo (opcional)
    ```sh
    npm install --save -dev
-   npm run dev
+   nodemon
    ```
 
 <p align="right">(<a href="#top">Volver al inicio</a>)</p>
