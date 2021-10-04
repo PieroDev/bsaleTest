@@ -77,7 +77,7 @@ Este ejercicio fue desarrollado con el lenguaje requerido para la prueba y otras
 * [javascript](https://www.javascript.com/) como lenguaje base de la aplicación.
 * [Bootstrap](https://getbootstrap.com/) libreria para diseño front-end.
 * [express.js](https://expressjs.com/) framework de nodeJs para desarrollo de API y más.
-* [mysql](https://www.npmjs.com/package/mysql) package para nodeJs..
+* [mysql](https://www.npmjs.com/package/mysql) package para nodeJs.
 * [Animate.css](https://animate.style/) librería para animaciónes en css de distintos componentes.
 
 
@@ -124,7 +124,7 @@ Si necesitas saber tu versión, utiliza:
 <!-- USAGE EXAMPLES -->
 ## Documentación
 
-Para más información respecto a este ejercicio se encuentra disponible una _[Ir a wiki](https://github.com/PieroDev/bsaleTest/wiki/_new)_
+Para más información respecto a este ejercicio se encuentra disponible una _[wiki](https://github.com/PieroDev/bsaleTest/wiki/_new)_
 
 _[Ir a wiki](https://github.com/PieroDev/bsaleTest/wiki/_new)_
 
