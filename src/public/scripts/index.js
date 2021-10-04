@@ -1,5 +1,13 @@
 let previousData
 let loadSpinner = true
+let productItems = []
+let productsPages = []
+let selectedPage
+let selectedIndex
+let startIndex
+let endIndex
+let pagingList
+
 //Initial products query
 const getItems = async () => {
     const res = await fetch("bsaleApi/");
@@ -15,6 +23,13 @@ const getCategories = async () => {
     const data = await res.json()
     //console.log(data)
     return data;
+}
+
+const getProductById = async (id) =>{
+    const idToSearch = id
+    const res = await fetch(`/bsaleApi/product/${idToSearch}`)
+    const data = await res.json()
+    return data
 }
 
 let categoriesDataApi = getCategories()
@@ -66,7 +81,6 @@ const searchByCategory = async () =>{
 
 //Fetches the data searching by name
 const searchItemByInput = async () => {
-    
     const inputString = document.getElementById("search-input").value  
     if(inputString === ""){
         document.getElementById("search-hint").style.visibility = "inherit"
@@ -118,14 +132,6 @@ const orderBy = () =>{
     renderData(previousData)
 }
 
-let productItems = []
-let productsPages = []
-let selectedPage
-let selectedIndex
-let startIndex
-let endIndex
-let pagingList
-
 const calculatePagination = async ( data ) =>{
     const productItems = await data
     let pagesNumber = productItems.length / 8
@@ -175,7 +181,6 @@ const injectPage = async (data) =>{
                         <br/>
                         ${discount}%
                     </p>
-                    
                 </div>
                 <p class="card-text precio-normal">Precio normal: $${price}</p>
                 <p class="card-text precio-descuento">Precio Descuento:</p>
@@ -191,14 +196,16 @@ const injectPage = async (data) =>{
         }
 
         renderedItems += `
-            <div class="card-container">
+            <div class="card-container shadow">
                 <div class="card">
-                <img src="${ url_image || defaultUrlImage }" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title productName">${name}</h4>
-                    ${priceContent}
+                    <img src="${ url_image || defaultUrlImage }" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title productName">${name}</h4>
+                        ${priceContent}
+                    </div>
+                    <button class="btn btn-addtoCart" onclick="addToCart(${id})">Agregar al carro</button>
                 </div>
-                </div>
+                
             </div>
         `
     })
@@ -221,7 +228,6 @@ const injectPage = async (data) =>{
 
 const goPrev = () =>{
     if(selectedPage != 1){
-        //window.scrollTo(0, 0);
         startIndex -= 8
         endIndex -= 8
         selectedPage--
@@ -242,6 +248,38 @@ const goNext = () =>{
     }
 }
 
+let carrito = JSON.parse(localStorage.getItem('itemsOnCart')) || []
+const addToCart = async (id) =>{
+    const idToSearch = id
+    const addedItem = await getProductById(idToSearch)
+    console.log(addedItem)
+    carrito.push(addedItem)
+    localStorage.setItem("itemsOnCart", JSON.stringify(carrito))
+    injectCart()
+}
+
+
+const injectCart =() =>{
+    let storedCart = JSON.parse(localStorage.getItem("itemsOnCart"))
+    console.log(storedCart)
+    document.getElementById("itemsCounter").innerHTML = storedCart.length
+    const cartContainer = document.getElementById("cartContainer")
+    cartContainer.classList.add("animate__animated", "animate__heartBeat", "animate__repeat-2")
+    setTimeout(() => {
+        cartContainer.classList.remove("animate__animated", "animate__heartBeat", "animate__repeat-2")
+    }, 3000);
+}
+
+const redirect = () => {
+    window.location.href = "/cartList.html";
+};
+
+
+
+
+
+
 //Initial render of products and its categories
 calculatePagination(dataApi)
 renderCategories(categoriesDataApi)
+injectCart()

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,10 +35,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="slick-loader.min.css" />
+    <title>Bsale Test Piero Zuniga</title>
 </head>
 <body>
-    <br>
+    <a style="text-decoration: none;" onclick="redirect()">
+        <div id="cartContainer" class="cart-container shadow">
+            <div id="itemsCounterContainer" class="items-counter-container">
+                <div class="cart-icon-container">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <p id="itemsCounter">0</p>
+            </div>
+        </div>
+    </a>
     <div id="spinner" class="loader-container">
         <div class="spinner-container">
             <div class="loader">
@@ -70,7 +79,7 @@
             <div class="row">
                 <h3>Busca lo que quieres</h3>
                 <div class="input-container">
-                    <input id="search-input" class="search-input" type="text" onkeypress="search(event)">
+                    <input id="search-input" class="search-input shadow" type="text" onkeypress="search(event)">
                     <p id="search-hint" style="visibility: hidden; color: red;">Ingresa producto a buscar</p>
                     <div>
                         <p id="resultados" style="visibility: hidden;">Se encontraron <span id="total-resultados"></span> resultados</p>
@@ -110,8 +119,83 @@
                 </ul>
             </div>
         </div>
+        <div>
+
+        </div>
     </section>
-    
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section
+          class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+          <!-- Left -->
+          
+          <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <section class="">
+          <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  <i class="fas fa-gem me-3"></i>Bsale
+                </h6>
+                <p>
+                  Esta es una prueba técnica para Bsale
+                </p>
+              </div>
+              <!-- Grid column -->
+      
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Hecho con
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">HTML</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">CSS</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Vanilla JavaScript</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+      
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Contacto
+                </h6>
+                <p><i class="fas fa-home me-3"></i> Santiago de Chile</p>
+                <p>
+                  <i class="fas fa-envelope me-3"></i>
+                  pierozudev@gmail.com
+                </p>
+                <p><i class="fas fa-phone me-3"></i> +569 77542297</p>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+        <!-- Section: Links  -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2021 Copyright:
+          <p class="text-reset fw-bold">Piero Zúñiga</p>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
 </body>
 <script src="scripts/index.js"></script>
 </html>

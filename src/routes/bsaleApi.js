@@ -63,14 +63,14 @@ router.get("/search/:name", (req, res) => {
 
 router.get("/product/:id", (req, res) => {
     const { id } = req.params
-    connection.query("SELECT * FROM product WHERE id = ?", [id], 
+    sqlConn.query("SELECT * FROM product WHERE id = ?", [id], 
     (err, rows, fields) =>{ 
         if(err){
             console.log(err)
             res.json({status: false})
         }
         else{
-            res.json(rows)
+            res.json(rows[0])
         }
     })
 })
