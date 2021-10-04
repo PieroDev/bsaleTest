@@ -16,8 +16,6 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Tabla de contenido</summary>
@@ -124,9 +122,9 @@ Si necesitas saber tu versión, utiliza:
 <!-- USAGE EXAMPLES -->
 ## Documentación
 
-Para más información respecto a este ejercicio se encuentra disponible una _[wiki](https://github.com/PieroDev/bsaleTest/wiki/_new)_
+Para más información respecto a este ejercicio se encuentra disponible una _[wiki](https://github.com/PieroDev/bsaleTest/wiki)_
 
-_[Ir a wiki](https://github.com/PieroDev/bsaleTest/wiki/_new)_
+_[Ir a wiki](https://github.com/PieroDev/bsaleTest/wiki)_
 
 <p align="right">(<a href="#top">Volver al inicio</a>)</p>
 

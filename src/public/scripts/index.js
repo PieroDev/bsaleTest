@@ -132,6 +132,7 @@ const orderBy = () =>{
     renderData(previousData)
 }
 
+//Calculates de number of pages by the amount of items on data
 const calculatePagination = async ( data ) =>{
     const productItems = await data
     let pagesNumber = productItems.length / 8
@@ -149,6 +150,7 @@ const calculatePagination = async ( data ) =>{
     injectPage(productItems)
 }
 
+//renders pagination data to the client
 const injectPagination = () =>{
     pagingList = `
         <li class="page-item"><a href="#content" class="page-link" onclick="goPrev()">Anterior</a></li>
@@ -158,7 +160,7 @@ const injectPagination = () =>{
     document.getElementById("pagingTop").innerHTML = pagingList
     document.getElementById("pagingBottom").innerHTML = pagingList
 }
-
+//renders all the items data to the client
 const injectPage = async (data) =>{
     const apiResp = await data
     const spinner = document.getElementById("spinner")
@@ -222,10 +224,10 @@ const injectPage = async (data) =>{
         document.getElementById('items-container').innerHTML = renderedItems
         document.getElementById('total-resultados').innerHTML = list.length
     }
-    
     document.getElementById('resultados').style.visibility = 'inherit'
 }
 
+//Handles page to render
 const goPrev = () =>{
     if(selectedPage != 1){
         startIndex -= 8
@@ -237,6 +239,7 @@ const goPrev = () =>{
     }
 }
 
+//Handles page to render
 const goNext = () =>{
     if(selectedPage < productsPages.length){
         startIndex += 8
@@ -248,6 +251,7 @@ const goNext = () =>{
     }
 }
 
+// set localStorage for cart
 let carrito = JSON.parse(localStorage.getItem('itemsOnCart')) || []
 const addToCart = async (id) =>{
     const idToSearch = id
@@ -258,10 +262,9 @@ const addToCart = async (id) =>{
     injectCart()
 }
 
-
+//Renders amount of items on the cart
 const injectCart =() =>{
     let storedCart = JSON.parse(localStorage.getItem("itemsOnCart"))
-    console.log(storedCart)
     document.getElementById("itemsCounter").innerHTML = storedCart.length
     const cartContainer = document.getElementById("cartContainer")
     cartContainer.classList.add("animate__animated", "animate__heartBeat", "animate__repeat-2")
@@ -273,11 +276,6 @@ const injectCart =() =>{
 const redirect = () => {
     window.location.href = "/cartList.html";
 };
-
-
-
-
-
 
 //Initial render of products and its categories
 calculatePagination(dataApi)

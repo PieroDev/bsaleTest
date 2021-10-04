@@ -57,8 +57,8 @@ router.get("/search/:name", (req, res) => {
             res.json(rows)
         }
       }
-    );
-});
+    )
+})
 
 
 router.get("/product/:id", (req, res) => {
